@@ -38,8 +38,12 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
-    
+    "launchdarkly_drf",
 ]
+
+LAUNCHDARKLY_SDK_KEY = "your-sdk-key-here"
+
+LAUNCHDARKLY_OFFLINE = False  # Set to True in test settings
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

@@ -3,6 +3,7 @@ from rest_framework import serializers, viewsets
 from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+from launchdarkly_drf import has_feature
 
 
 # Serializers define the API representation.
@@ -19,4 +20,5 @@ class UserViewSet(viewsets.ModelViewSet):
 
 @api_view(["GET"])
 def test_view(request: Request) -> Response:
-    return Response("Test view is working!")
+    value = has_feature("TEST_FLAG", request=request)
+    return Response(f"Test flag value: {value=}")
